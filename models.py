@@ -1,7 +1,5 @@
 from sqlmodel import SQLModel, Field, Relationship
 from typing import Optional, List
-from utils.positions import Position
-from utils.states import States
 
 
 class JugadorBase(SQLModel):
@@ -22,10 +20,19 @@ class JugadorCreate(JugadorBase):
 
 
 
-class EstadisticaBase(SQLModel):
+class EstadisticaBase(SQLModel, table=True):
     goles: int = 0
     asistencias: int = 0
     partidos_jugados: int = 0
+
+class EstadisticaPartidos(SQLModel):
+    goles: int
+    asistencias: int
+    minutos_jugados: int
+    faltas_cometidas: int
+    tarjeta_amarilla: bool
+    tarjeta_roja: bool
+    lesion: bool
 
 
 class Estadistica(EstadisticaBase, table=True):
