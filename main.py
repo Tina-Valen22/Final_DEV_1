@@ -21,9 +21,6 @@ def home():
     return {"message": "sigmotoa FC API con SQLModel"}
 
 
-# --------------------------------
-#            JUGADORES
-# --------------------------------
 
 @app.post("/jugadores/", response_model=Jugador)
 def crear_jugador(jugador: JugadorCreate, session: Session = Depends(get_session)):
@@ -58,9 +55,6 @@ def eliminar_jugador(jugador_id: int, session: Session = Depends(get_session)):
     return {"message": "Jugador eliminado"}
 
 
-# --------------------------------
-#            ESTADISTICAS
-# --------------------------------
 
 @app.post("/estadisticas/")
 def crear_estadistica(est: EstadisticaCreate, session: Session = Depends(get_session)):
@@ -79,10 +73,6 @@ def crear_estadistica(est: EstadisticaCreate, session: Session = Depends(get_ses
 def obtener_estadisticas(session: Session = Depends(get_session)):
     return session.exec(select(Estadistica)).all()
 
-
-# --------------------------------
-#            PARTIDOS
-# --------------------------------
 
 @app.post("/partidos/")
 def crear_partido(partido: PartidoCreate, session: Session = Depends(get_session)):

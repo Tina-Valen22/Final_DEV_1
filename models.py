@@ -4,10 +4,6 @@ from utils.positions import Position
 from utils.states import States
 
 
-# ---------------------------
-# JUGADOR
-# ---------------------------
-
 class JugadorBase(SQLModel):
     nombre: str
     edad: int
@@ -25,9 +21,6 @@ class JugadorCreate(JugadorBase):
     pass
 
 
-# ---------------------------
-# ESTADISTICA
-# ---------------------------
 
 class EstadisticaBase(SQLModel):
     goles: int = 0
@@ -45,10 +38,6 @@ class Estadistica(EstadisticaBase, table=True):
 class EstadisticaCreate(EstadisticaBase):
     jugador_id: int
 
-
-# ---------------------------
-# PARTIDO
-# ---------------------------
 
 class PartidoBase(SQLModel):
     equipo_local: str
